@@ -1,0 +1,4 @@
+.rbenv-gemsets
+.vagrant
+Vagrantfile
+Guardfile

@@ -1,0 +1,31 @@
+/*
+	banner
+*/
+
+.banner {
+	background:#006;
+	box-shadow:0 0px 5px #000;
+	-moz-box-shadow:0 0px 5px #000;
+	-webkit-box-shadow:0 0px 5px #000;
+	float:left;
+	height:340px;
+	margin:20px 0 20px 0;
+	width:100%;
+}
+
+/*
+	vídeos
+*/
+
+.videos {
+	float:left;
+	height:264px;
+	margin:0 0 20px 0;
+	width:470px;
+}
+
+.videos iframe {
+	box-shadow:0 0px 5px #000;
+	-moz-box-shadow:0 0px 5px #000;
+	-webkit-box-shadow:0 0px 5px #000;
+}
