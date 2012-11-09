@@ -144,10 +144,7 @@
     }
 
     public function specie() {
-      if($this->specie == 0)
-        return 'Cachorro';
-      else
-        return 'Gato';
+      return $this->SPECIES[$this->specie];
     }
 
     public function color() {
