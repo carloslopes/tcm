@@ -159,7 +159,7 @@
       if(file_exists($dir) && $handle = opendir($pics_dir . $this->id)) {
         while(false !== ($entry = readdir($handle))) {
           if($entry !== '.' && $entry !== '..')
-            array_push($files, $this->id . '/' . $entry);
+            array_push($files, "/imagens/animals/$this->id/$entry");
         }
       }
 
