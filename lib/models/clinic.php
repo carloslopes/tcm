@@ -3,6 +3,7 @@
   class Clinic {
     public $id, $name, $address, $district, $city, $state, $phone, $email, $website;
     private $conn;
+    private $vets = array();
 
     public function __construct($conn, $attrs = array()) {
       $this->conn = $conn;
@@ -113,6 +114,19 @@
       $stmt = $this->conn->prepare("DELETE FROM clinics WHERE id = ?");
       $stmt->bind_param('i', $id);
       return $stmt->execute();
+    }
+
+    public function vets() {
+      if(empty($this->vets)) {
+        $query = $this->conn->query("SELECT * FROM vets WHERE clinic_id = $this->id");
+
+        while($row = $query->fetch_assoc()) {
+          $vet = new Vet($this->conn, $row);
+          array_push($this->vets, $vet);
+        }
+      }
+
+      return $this->vets;
     }
 
     ### Helpers Methods
