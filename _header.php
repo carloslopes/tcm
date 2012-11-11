@@ -35,10 +35,7 @@
 <body>
   <div class="wrapper">
 
-  <!-- filtros -->
-  <section class="filtros">
-
-  </section><!-- /.filtros -->
+  <?php include '_filters.php' ?>
 
   <!-- menu -->
   <nav>
