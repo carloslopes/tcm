@@ -17,20 +17,22 @@
         <title>GAAR - Grupo de apoio ao animal de Rua de Campinas</title>
 
         <!-- links, stylesheets e style -->
-        <link rel="stylesheet" href="css/reset.css" media="screen" />
-        <link rel="stylesheet" href="css/geral.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="css/home.css" media="screen" />
+        <link rel="stylesheet" href="/css/reset.css" media="screen" />
+        <link rel="stylesheet" href="/css/geral.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="/css/home.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="/css/formularios.css" media="screen" />
 
         <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
         <link rel='shortcut icon' href='favicon.ico' />
         <link rel='apple-touch-icon' href='apple-touch-icon.png' />
 
         <!-- scripts -->
-        <script type="text/javascript" src="scripts/jquery/jquery.js"></script>
-        <script type="text/javascript" src="scripts/jquery/modernizr.js"></script>
+        <script type="text/javascript" src="/scripts/jquery/jquery.js"></script>
+        <script type="text/javascript" src="/scripts/jquery/modernizr.js"></script>
 
         <!-- filtros -->
-        <script type="text/javascript" src="scripts/filtros.js"></script>
+        <script type="text/javascript" src="/scripts/filtros.js"></script>
+        <script type="text/javascript" src="/scripts/login.js"></script>
 </head>
 <body>
   <div class="wrapper">
@@ -64,11 +66,26 @@
 
       <h2>GAAR Campinas - Grupo de apoio ao animal de rua</h2>
 
-      <!-- search -->
-      <form action="#" class="search" enctype="multipart/form-data" method="post" name="search">
-        <input type="text" class="txt-search" name="txt-search" value="Buscar..." onfocus="if (this.value=='Buscar...') this.value='';" onblur="if (this.value=='') this.value='Buscar...'" />
-        <input type="submit" class="btn-search" name="btn-search" value="" />
+      <a class="login" title="login">login</a>
+
+      <!-- login form -->
+      <form action="#" class="logar" method="post" name="logar">
+        <input type="text" class="txt-user" name="email" value="Entre com seu email..."
+          onfocus="if (this.value=='Entre com seu usuário...') this.value='';"
+          onblur="if (this.value=='') this.value='Entre com seu usuário...'"
+        />
+
+        <input type="password" class="txt-senha" name="password" value="Digite sua senha..."
+          onfocus="if (this.value=='Digite sua senha...') this.value=''; this.type='password'"
+          onblur="if (this.value=='') this.value='Digite sua senha...';"
+        />
+
+        <a href="login.htm" class="cadastre" title="cadastre-se">cadastre-se</a>
+
+        <input type="submit" class="btn-logar" value="OK" />
       </form>
+
+      <a href="login.htm" class="cadastrese" title="cadastre-se">cadastre-se</a>
     </div><!-- /.header-inner -->
   </header>
 
