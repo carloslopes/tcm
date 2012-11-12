@@ -71,8 +71,8 @@
       <!-- login form -->
       <form action="#" class="logar" method="post" name="logar">
         <input type="text" class="txt-user" name="email" value="Entre com seu email..."
-          onfocus="if (this.value=='Entre com seu usuário...') this.value='';"
-          onblur="if (this.value=='') this.value='Entre com seu usuário...'"
+          onfocus="if (this.value=='Entre com seu email...') this.value='';"
+          onblur="if (this.value=='') this.value='Entre com seu email...'"
         />
 
         <input type="password" class="txt-senha" name="password" value="Digite sua senha..."
