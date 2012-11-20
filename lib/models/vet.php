@@ -1,11 +1,11 @@
 <?php
 
-  class Vet {
+  class Vet extends Base {
     public $id, $crmv, $name, $email, $phone, $clinic_id;
-    private $conn, $clinic;
+    private $clinic;
 
-    public function __construct($conn, $attrs = array()) {
-      $this->conn = $conn;
+    public function __construct($attrs = array()) {
+      parent::__construct();
       $this->fill_attributes($attrs);
     }
 
@@ -59,7 +59,7 @@
       $vets = array();
 
       while($row = $result->fetch_assoc()) {
-        $vet = new Vet($this->conn, $row);
+        $vet = new Vet($row);
         array_push($vets, $vet);
       }
 
@@ -89,7 +89,7 @@
     public function find($id) {
       $id = addslashes($id);
       $result = $this->conn->query("SELECT * FROM vets where id = $id");
-      return new Vet($this->conn, $result->fetch_assoc());
+      return new Vet($result->fetch_assoc());
     }
 
     public function update_attributes($attrs) {
@@ -115,10 +115,10 @@
     }
 
     public function clinic() {
-      if(empty($this->clinic_id)) return new Clinic($this->conn);
+      if(empty($this->clinic_id)) return new Clinic();
 
       if(empty($this->clinic)) {
-        $klass = new Clinic($this->conn);
+        $klass = new Clinic();
         $this->clinic = $klass->find($this->clinic_id);
       }
 

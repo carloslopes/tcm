@@ -1,7 +1,7 @@
 ﻿<?php include '_header.php'; include '_submenu.html';
 
   if(is_post() && isset($_POST['cadastrar'])) {
-    $animal = new Animal($conn, $_POST);
+    $animal = new Animal($_POST);
     $animal->publisher = $current_user->id;
 
     if($animal->save()) {
@@ -12,13 +12,13 @@
       else
         echo '<h2>Erro ao realizar upload de uma ou mais fotos</h2>';
 
-      $animal = new Animal($conn);
+      $animal = new Animal();
     }
     else
       echo '<h2>Erro ao cadastrar animal, corriga os campos e tente novamente</h2>';
   }
   else
-    $animal = new Animal($conn);
+    $animal = new Animal();
 
 ?>
 

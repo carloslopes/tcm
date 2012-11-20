@@ -1,9 +1,8 @@
 <?php
 
-  class Animal {
+  class Animal extends Base {
     public $id, $name, $specie, $breed, $color, $age, $description, $history;
-    public $errors, $publisher;
-    private $conn;
+    public $publisher;
 
     private $COLORS = array(
       0 => 'Branco',
@@ -25,8 +24,8 @@
       4 => 'Egípcio'
     );
 
-    public function __construct($conn, $attrs = array()) {
-      $this->conn = $conn;
+    public function __construct($attrs = array()) {
+      parent::__construct();
       $this->fill_attributes($attrs);
     }
 
@@ -94,7 +93,7 @@
       $animals = array();
 
       while($row = $result->fetch_assoc()) {
-        $animal = new Animal($this->conn, $row);
+        $animal = new Animal($row);
         array_push($animals, $animal);
       }
 
@@ -129,7 +128,7 @@
       $id = addslashes($id);
       $query = $this->conn->query("SELECT * FROM animals WHERE id = $id");
       $row   = $query->fetch_assoc();
-      return new Animal($this->conn, $row);
+      return new Animal($row);
     }
 
     public function destroy($id) {

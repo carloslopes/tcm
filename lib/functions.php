@@ -1,15 +1,19 @@
 <?php
+
+  # DB connection
   include 'database.php';
+  $conn = db_connect();
+
+  # Models
+  include 'models/base.php';
   include 'models/animal.php';
   include 'models/vet.php';
   include 'models/clinic.php';
   include 'models/user.php';
 
+  # Bcrypt
   include 'phpass-0.3/PasswordHash.php';
   $hasher = new PasswordHash(8, false);
-
-  # DB connection
-  $conn = db_connect();
 
   # Pics dir
   $pics_dir = '/var/uploads/';
@@ -19,10 +23,11 @@
 
   $current_user;
   if(isset($_SESSION['user_id'])) {
-    $klass = new User($conn);
+    $klass = new User();
     $current_user = $klass->find($_SESSION['user_id']);
   }
 
+  # Helpers
   function is_post() {
     return $_SERVER['REQUEST_METHOD'] == 'POST';
   }

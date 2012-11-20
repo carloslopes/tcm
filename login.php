@@ -2,18 +2,18 @@
   include '_header.php';
 
   if(is_post() && isset($_POST['cadastro'])) {
-    $user = new User($conn, $_POST);
+    $user = new User($_POST);
     $user->admin = 0;
 
     if($user->save()) {
       echo '<h2>Cadastro realizado com sucesso, agora você já pode logar.</h2>';
-      $user = new User($conn);
+      $user = new User();
     }
     else
       echo '<h2>Erro ao cadastrar, corriga os campos e tente novamente.</h2>';
   }
   else
-    $user = new User($conn);
+    $user = new User();
 
 ?>
 

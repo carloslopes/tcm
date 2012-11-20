@@ -2,7 +2,7 @@
   include '_header.php';
   include '_submenu.html';
 
-  $klass = new Clinic($conn);
+  $klass = new Clinic();
   $clinics = $klass->all();
 ?>
 

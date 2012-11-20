@@ -1,14 +1,13 @@
 <?php
 
-  class User {
-    public $id, $name, $email, $cpf, $address, $district, $city, $state, $phone, $admin, $errors;
-    private $conn;
+  class User extends Base {
+    public $id, $name, $email, $cpf, $address, $district, $city, $state, $phone, $admin;
 
     private $encrypted_password;
     public $password, $password_confirmation;
 
-    public function __construct($conn, $attrs = array()) {
-      $this->conn = $conn;
+    public function __construct($attrs = array()) {
+      parent::__construct();
       $this->fill_attributes($attrs);
     }
 
@@ -113,7 +112,7 @@
       $users = array();
 
       while($row = $query->fetch_assoc()) {
-        $user = new User($this->conn, $row);
+        $user = new User($row);
         array_push($users, $user);
       }
 
@@ -150,7 +149,7 @@
     public function find($id) {
       $id = addslashes($id);
       $result = $this->conn->query("SELECT * FROM users WHERE id = $id");
-      return new User($this->conn, $result->fetch_assoc());
+      return new User($result->fetch_assoc());
     }
 
     public function find_by_email($email) {
@@ -158,7 +157,7 @@
       $result = $this->conn->query("SELECT * FROM users WHERE email = '$email'");
 
       if(!$result || $result->num_rows === 0) return null;
-      return new User($this->conn, $result->fetch_assoc());
+      return new User($result->fetch_assoc());
     }
 
     public function update_attributes($attrs) {

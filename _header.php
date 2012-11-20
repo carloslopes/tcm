@@ -1,7 +1,7 @@
 <?php include_once 'lib/functions.php';
 
   if(is_post() && isset($_POST['login'])) {
-    $klass = new User($conn);
+    $klass = new User();
     $email = $_POST['email'];
     $user  = $klass->authenticate($email, $_POST['password']);
 
