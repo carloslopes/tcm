@@ -11,6 +11,12 @@
   include 'models/clinic.php';
   include 'models/user.php';
 
+  # Mailers
+  include 'phpmailer/class.phpmailer.php';
+  include 'phpmailer/class.smtp.php';
+  include 'mailers/base.php';
+  include 'mailers/contact.php';
+
   # Bcrypt
   include 'phpass-0.3/PasswordHash.php';
   $hasher = new PasswordHash(8, false);
