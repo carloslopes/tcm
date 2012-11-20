@@ -48,7 +48,7 @@
       <?php if(signed_in()) { ?>
       <form action="" class="cadastro-animal" enctype="multipart/form-data" method="post">
         <label>Espécie:</label>
-        <?php $animal->species_radio_tag($animal->specie) ?>
+        <?php $animal->species_radio_tag() ?>
         <?php input_error($animal->errors['specie']) ?>
 
         <label>Nome:</label>
@@ -56,11 +56,11 @@
         <?php input_error($animal->errors['name']) ?>
 
         <label>Raça:</label>
-        <?php $animal->breeds_select_tag($animal->breed) ?>
+        <?php $animal->breeds_select_tag() ?>
         <?php input_error($animal->errors['breed']) ?>
 
         <label>Cor:</label>
-        <?php $animal->colors_select_tag($animal->color) ?>
+        <?php $animal->colors_select_tag() ?>
         <?php input_error($animal->errors['color']) ?>
 
         <label>Idade:</label>

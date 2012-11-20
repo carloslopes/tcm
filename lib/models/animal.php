@@ -181,8 +181,8 @@
       return $files;
     }
 
-    public function species_radio_tag($checked) {
-      if(empty($checked)) $checked = 0;
+    public function species_radio_tag() {
+      $checked = empty($this->specie) ? 0 : $this->specie;
 
       foreach($this->SPECIES as $key => $value) {
         $checked_str = ($key == $checked) ? 'checked="checked"' : '';
@@ -190,24 +190,24 @@
       }
     }
 
-    public function colors_select_tag($selected = null) {
+    public function colors_select_tag() {
       echo '<select name="color">';
       echo '<option>Informe a cor do animal...</option>';
 
       foreach($this->COLORS as $key => $value) {
-        $selected_str = (isset($selected) && $key == $selected) ? 'selected' : '';
+        $selected_str = (isset($this->color) && $key == $this->color) ? 'selected' : '';
         echo "<option value='$key' $selected_str>$value</option>";
       }
 
       echo '</select>';
     }
 
-    public function breeds_select_tag($selected = null) {
+    public function breeds_select_tag() {
       echo '<select name="breed">';
       echo '<option>Informe a raça do animal...</option>';
 
       foreach($this->BREEDS as $key => $value) {
-        $selected_str = (isset($selected) && $key == $selected) ? 'selected' : '';
+        $selected_str = (isset($this->breed) && $key == $this->breed) ? 'selected' : '';
         echo "<option value='$key' $selected_str>$value</option>";
       }
 
