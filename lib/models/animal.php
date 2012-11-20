@@ -1,7 +1,7 @@
 <?php
 
   class Animal {
-    public $id, $name, $specie, $race, $color, $age, $description, $history;
+    public $id, $name, $specie, $breed, $color, $age, $description, $history, $errors;
     private $conn;
 
     private $COLORS = array(
@@ -16,6 +16,14 @@
       1 => 'Gato'
     );
 
+    private $BREEDS = array(
+      0 => 'Vira-lata',
+      1 => 'Pitbull',
+      2 => 'Siames',
+      3 => 'Bulldog',
+      4 => 'Egípcio'
+    );
+
     public function __construct($conn, $attrs = array()) {
       $this->conn = $conn;
       $this->fill_attributes($attrs);
@@ -26,7 +34,7 @@
     public function valid() {
       $this->check_name();
       $this->check_specie();
-      $this->check_race();
+      $this->check_breed();
       $this->check_color();
       $this->check_age();
       $this->check_description();
@@ -36,7 +44,7 @@
     }
 
     private function check_name() {
-      if(empty($this->name))
+      if(empty($this->name) || $this->name === 'Informe o nome do animal...')
         $this->errors['name'] = 'Nome não pode ficar em branco';
     }
 
@@ -47,9 +55,11 @@
         $this->errors['specie'] = 'Informe uma espécie válida';
     }
 
-    private function check_race() {
-      if(empty($this->race))
-        $this->errors['race'] = 'Raça não pode ficar em branco';
+    private function check_breed() {
+      if(!isset($this->breed))
+        $this->errors['breed'] = 'Raça não pode ficar em branco';
+      else if(!array_key_exists($this->breed, $this->BREEDS))
+        $this->errors['breed'] = 'Informe uma raça válida';
     }
 
     private function check_color() {
@@ -60,7 +70,9 @@
     }
 
     private function check_age() {
-      if(!empty($this->age) && !is_numeric($this->age))
+      if($this->age === 'Informe a idade aproximada do animal...')
+        $this->age = null;
+      else if(!empty($this->age) && !is_numeric($this->age))
         $this->errors['age'] = 'Idade aproximada deve ser um número';
     }
 
@@ -91,13 +103,13 @@
     public function save() {
       if($this->valid()) {
         if(!empty($this->id)) {
-          $stmt = $this->conn->prepare('UPDATE animals SET name = ?, specie = ?, race = ?, color = ?, age = ?, description = ?, history = ? WHERE id = ?');
-          $stmt->bind_param('sisiissi', $this->name, $this->specie, $this->race, $this->color, $this->age, $this->description, $this->history, $this->id);
+          $stmt = $this->conn->prepare('UPDATE animals SET name = ?, specie = ?, breed = ?, color = ?, age = ?, description = ?, history = ? WHERE id = ?');
+          $stmt->bind_param('sisiissi', $this->name, $this->specie, $this->breed, $this->color, $this->age, $this->description, $this->history, $this->id);
           $stmt->execute();
         }
         else {
-          $stmt = $this->conn->prepare('INSERT INTO animals (name, specie, race, color, age, description, history) VALUES (?, ?, ?, ?, ?, ?, ?)');
-          $stmt->bind_param('sisiiss', $this->name, $this->specie, $this->race, $this->color, $this->age, $this->description, $this->history);
+          $stmt = $this->conn->prepare('INSERT INTO animals (name, specie, breed, color, age, description, history) VALUES (?, ?, ?, ?, ?, ?, ?)');
+          $stmt->bind_param('sisiiss', $this->name, $this->specie, $this->breed, $this->color, $this->age, $this->description, $this->history);
 
           $stmt->execute();
           $this->id = mysqli_insert_id($this->conn);
@@ -136,7 +148,7 @@
       if(isset($attrs['id'])) { $this->id = $attrs['id']; }
       if(isset($attrs['name'])) { $this->name = $attrs['name']; }
       if(isset($attrs['specie'])) { $this->specie = $attrs['specie']; }
-      if(isset($attrs['race'])) { $this->race = $attrs['race']; }
+      if(isset($attrs['breed'])) { $this->breed = $attrs['breed']; }
       if(isset($attrs['color'])) { $this->color = $attrs['color']; }
       if(isset($attrs['age'])) { $this->age = $attrs['age']; }
       if(isset($attrs['description'])) { $this->description = $attrs['description']; }
@@ -149,6 +161,10 @@
 
     public function color() {
       return $this->COLORS[$this->color];
+    }
+
+    public function breed() {
+      return $this->BREEDS[$this->breed];
     }
 
     public function pictures() {
@@ -164,6 +180,39 @@
       }
 
       return $files;
+    }
+
+    public function species_radio_tag($checked) {
+      if(empty($checked)) $checked = 0;
+
+      foreach($this->SPECIES as $key => $value) {
+        $checked_str = ($key == $checked) ? 'checked="checked"' : '';
+        echo "<input type='radio' name='specie' $checked_str value='$key' />$value";
+      }
+    }
+
+    public function colors_select_tag($selected = null) {
+      echo '<select name="color">';
+      echo '<option>Informe a cor do animal...</option>';
+
+      foreach($this->COLORS as $key => $value) {
+        $selected_str = (isset($selected) && $key == $selected) ? 'selected' : '';
+        echo "<option value='$key' $selected_str>$value</option>";
+      }
+
+      echo '</select>';
+    }
+
+    public function breeds_select_tag($selected = null) {
+      echo '<select name="breed">';
+      echo '<option>Informe a raça do animal...</option>';
+
+      foreach($this->BREEDS as $key => $value) {
+        $selected_str = (isset($selected) && $key == $selected) ? 'selected' : '';
+        echo "<option value='$key' $selected_str>$value</option>";
+      }
+
+      echo '</select>';
     }
   }
 
