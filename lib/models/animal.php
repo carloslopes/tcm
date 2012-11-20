@@ -87,8 +87,39 @@
 
     ### Db queries
     ### ==================================
-    public function all() {
-      $result = $this->conn->query('SELECT * FROM animals');
+    public function all($where = null) {
+      if(!empty($where)) $where = 'WHERE ' . $where;
+      $result = $this->conn->query("SELECT * FROM animals $where");
+      $animals = array();
+
+      while($row = $result->fetch_assoc()) {
+        $animal = new Animal($row);
+        array_push($animals, $animal);
+      }
+
+      return $animals;
+    }
+
+    public function search($specie, $breed, $color, $age, $description) {
+      switch($age) {
+        case '%':
+          $age_query = '';
+          break;
+
+        case '0':
+          $age_query = 'AND age BETWEEN 1 AND 3';
+          break;
+
+        case '1':
+          $age_query = 'AND age BETWEEN 4 AND 6';
+          break;
+
+        case '2':
+          $age_query = 'AND age > 6';
+          break;
+      }
+
+      $result = $this->conn->query("SELECT * FROM animals WHERE specie = '$specie' AND breed LIKE '$breed' AND color LIKE '$color' $age AND description LIKE '%$description%'");
       $animals = array();
 
       while($row = $result->fetch_assoc()) {
@@ -192,7 +223,7 @@
 
     public function colors_select_tag() {
       echo '<select name="color">';
-      echo '<option>Informe a cor do animal...</option>';
+      echo '<option value="%">Informe a cor do animal...</option>';
 
       foreach($this->COLORS as $key => $value) {
         $selected_str = (isset($this->color) && $key == $this->color) ? 'selected' : '';
@@ -204,7 +235,7 @@
 
     public function breeds_select_tag() {
       echo '<select name="breed">';
-      echo '<option>Informe a raça do animal...</option>';
+      echo '<option value="%">Informe a raça do animal...</option>';
 
       foreach($this->BREEDS as $key => $value) {
         $selected_str = (isset($this->breed) && $key == $this->breed) ? 'selected' : '';
