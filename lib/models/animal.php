@@ -1,7 +1,8 @@
 <?php
 
   class Animal {
-    public $id, $name, $specie, $breed, $color, $age, $description, $history, $errors;
+    public $id, $name, $specie, $breed, $color, $age, $description, $history;
+    public $errors, $publisher;
     private $conn;
 
     private $COLORS = array(
@@ -102,17 +103,20 @@
 
     public function save() {
       if($this->valid()) {
-        if(!empty($this->id)) {
+        if(empty($this->id)) {
+          $stmt = $this->conn->prepare('INSERT INTO animals (name, specie, breed, color, age, description, history) VALUES (?, ?, ?, ?, ?, ?, ?)');
+          $stmt->bind_param('sisiiss', $this->name, $this->specie, $this->breed, $this->color, $this->age, $this->description, $this->history);
+          $stmt->execute();
+
+          if($stmt) {
+            $this->id = mysqli_insert_id($this->conn);
+            $this->set_publisher();
+          }
+        }
+        else {
           $stmt = $this->conn->prepare('UPDATE animals SET name = ?, specie = ?, breed = ?, color = ?, age = ?, description = ?, history = ? WHERE id = ?');
           $stmt->bind_param('sisiissi', $this->name, $this->specie, $this->breed, $this->color, $this->age, $this->description, $this->history, $this->id);
           $stmt->execute();
-        }
-        else {
-          $stmt = $this->conn->prepare('INSERT INTO animals (name, specie, breed, color, age, description, history) VALUES (?, ?, ?, ?, ?, ?, ?)');
-          $stmt->bind_param('sisiiss', $this->name, $this->specie, $this->breed, $this->color, $this->age, $this->description, $this->history);
-
-          $stmt->execute();
-          $this->id = mysqli_insert_id($this->conn);
         }
 
         return $stmt;
@@ -213,6 +217,14 @@
       }
 
       echo '</select>';
+    }
+
+    private function set_publisher() {
+      global $current_user;
+
+      $stmt = $this->conn->prepare('INSERT INTO publishers (animal_id, user_id) VALUES (?, ?)');
+      $stmt->bind_param('ii', $this->id, $current_user->id);
+      $stmt->execute();
     }
   }
 
