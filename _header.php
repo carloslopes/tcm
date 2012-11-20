@@ -1,4 +1,19 @@
-<?php include 'lib/functions.php'; ?>
+<?php include_once 'lib/functions.php';
+
+  if(is_post() && isset($_POST['login'])) {
+    $klass = new User($conn);
+    $email = $_POST['email'];
+    $user  = $klass->authenticate($email, $_POST['password']);
+
+    if(empty($user))
+      echo '<h2>Email ou senha incorretos, tente novamente.</h2>';
+    else {
+      sign_in($user);
+      echo '<h2>Login realizado com sucesso.</h2>';
+    }
+  }
+
+?>
 
 <!doctype html>
 <html>
@@ -66,14 +81,14 @@
 
       <h2>GAAR Campinas - Grupo de apoio ao animal de rua</h2>
 
+      <?php if(signed_in()) { ?>
+      <a href="/logout.php" class="login" title="logout">logout</a>
+      <?php } else { ?>
       <a class="login" title="login">login</a>
 
       <!-- login form -->
-      <form action="#" class="logar" method="post" name="logar">
-        <input type="text" class="txt-user" name="email" value="Entre com seu email..."
-          onfocus="if (this.value=='Entre com seu email...') this.value='';"
-          onblur="if (this.value=='') this.value='Entre com seu email...'"
-        />
+      <form action="" class="logar" method="post">
+        <input type="text" class="txt-user" name="email" <?php input_value('Entre com seu e-mail...', $email) ?> />
 
         <input type="text" class="txt-senha" name="password" value="Digite sua senha..."
           onfocus="if (this.value=='Digite sua senha...') this.value=''; this.type='password'"
@@ -82,10 +97,11 @@
 
         <a href="login.php" class="cadastre" title="cadastre-se">cadastre-se</a>
 
-        <input type="submit" class="btn-logar" value="OK" />
+        <input type="submit" class="btn-logar" name="login" value="OK" />
       </form>
 
       <a href="login.php" class="cadastrese" title="cadastre-se">cadastre-se</a>
+      <?php } ?>
     </div><!-- /.header-inner -->
   </header>
 

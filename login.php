@@ -1,18 +1,16 @@
 ﻿<?php
   include '_header.php';
 
-  if(is_post()) {
-    if(isset($_POST['cadastro'])) {
-      $user = new User($conn, $_POST);
-      $user->admin = 0;
+  if(is_post() && isset($_POST['cadastro'])) {
+    $user = new User($conn, $_POST);
+    $user->admin = 0;
 
-      if($user->save()) {
-        echo '<h2>Cadastro realizado com sucesso, agora você já pode logar.</h2>';
-        $user = new User($conn);
-      }
-      else
-        echo '<h2>Erro ao cadastrar, corriga os campos e tente novamente.</h2>';
+    if($user->save()) {
+      echo '<h2>Cadastro realizado com sucesso, agora você já pode logar.</h2>';
+      $user = new User($conn);
     }
+    else
+      echo '<h2>Erro ao cadastrar, corriga os campos e tente novamente.</h2>';
   }
   else
     $user = new User($conn);
@@ -22,6 +20,9 @@
   <section>
     <h2>Login / Cadastro</h2>
 
+    <?php if(signed_in()) { ?>
+    <p>Você já está logado, clique <a href="/logout.php">aqui</a> para deslogar.</p>
+    <?php } else { ?>
     <!-- cadastro -->
     <div class="cadastrar">
       <h2>Cadastro</h2>
@@ -87,18 +88,19 @@
     <div class="login-painel">
       <h2>Login</h2>
 
-      <form action="#" class="form-login" method="post">
+      <form action="" class="form-login" method="post">
         <label>E-mail:</label>
-        <input type="text" class="txt-user" name="email" value="Entre com seu email..." onfocus="if (this.value=='Entre com seu email...') this.value='';" onblur="if (this.value=='') this.value='Entre com seu email...'" />
+        <input type="text" class="txt-user" name="email" <?php input_value('Entre com seu e-mail...', $email) ?> />
 
         <label>Senha:</label>
         <input type="text" class="txt-senha" name="password" value="Digite sua senha..." onfocus="if (this.value=='Digite sua senha...') this.value=''; this.type='password'" onblur="if (this.value=='') this.value='Digite sua senha...';" />
 
         <a href="#" title="esqueci minha senha">esqueci minha senha</a>
-        <input type="submit" class="btn-logar" name="btn-logar" value="OK" />
+        <input type="submit" class="btn-logar" name="login" value="OK" />
       </form>
 
     </div><!-- /.logar -->
+    <?php } ?>
 
     <a href="javascript:window.history.go(-1)" title="voltar" class="voltar">voltar</a>
   </section>

@@ -51,6 +51,11 @@
     unset($GLOBALS['current_user']);
   }
 
+  function signed_in() {
+    global $current_user;
+    return !empty($current_user);
+  }
+
   function upload_pictures($animal, $files) {
     global $pics_dir;
     $errors = array();
