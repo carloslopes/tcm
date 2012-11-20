@@ -76,4 +76,16 @@
     rmdir($dir);
   }
 
+  function input_value($default, $variable) {
+    if(empty($variable) || $variable === $default)
+      echo "value=\"$default\" onfocus=\"if (this.value=='$default') this.value='';\" onblur=\"if (this.value=='') this.value='$default'\"";
+    else
+      echo "value='$variable'";
+  }
+
+  function input_error($message) {
+    if(!empty($message))
+      echo "<span class='erro'>$message</span>";
+  }
+
 ?>

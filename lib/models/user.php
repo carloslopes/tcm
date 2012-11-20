@@ -1,7 +1,7 @@
 <?php
 
   class User {
-    public $id, $name, $email, $cpf, $address, $district, $city, $state, $phone, $admin;
+    public $id, $name, $email, $cpf, $address, $district, $city, $state, $phone, $admin, $errors;
     private $conn;
 
     private $encrypted_password;
@@ -30,12 +30,12 @@
     }
 
     private function check_name() {
-      if(empty($this->name))
+      if(empty($this->name) || $this->name === 'Informe seu nome...')
         $this->errors['name'] = 'Nome não pode ficar em branco';
     }
 
     private function check_email() {
-      if(empty($this->email))
+      if(empty($this->email) || $this->email === 'Informe seu e-mail...')
         $this->errors['email'] = 'Email não pode ficar em branco';
       else if(!preg_match('/.+@.+\..+/', $this->email))
         $this->errors['email'] = 'Informe um email válido';
@@ -52,7 +52,7 @@
     }
 
     private function check_cpf() {
-      if(empty($this->cpf))
+      if(empty($this->cpf) || $this->cpf === 'Informe seu CPF...')
         $this->errors['cpf'] = 'CPF não pode ficar em branco';
       else if(!preg_match('/.+\..+\..+-.+/', $this->cpf))
         $this->errors['cpf'] = 'Informe um CPF válido';
@@ -69,35 +69,35 @@
     }
 
     private function check_address() {
-      if(empty($this->address))
+      if(empty($this->address) || $this->address === 'Informe seu endereço...')
         $this->errors['address'] = 'Endereço não pode ficar em branco';
     }
 
     private function check_district() {
-      if(empty($this->district))
+      if(empty($this->district) || $this->district === 'Informe seu bairro...')
         $this->errors['district'] = 'Bairro não pode ficar em branco';
     }
 
     private function check_city() {
-      if(empty($this->city))
+      if(empty($this->city) || $this->city === 'Informe sua cidade...')
         $this->errors['city'] = 'Cidade não pode ficar em branco';
     }
 
     private function check_state() {
-      if(empty($this->state))
+      if(empty($this->state) || $this->state === 'Informe seu estado...')
         $this->errors['state'] = 'Estado não pode ficar em branco';
     }
 
     private function check_phone() {
-      if(empty($this->phone))
+      if(empty($this->phone) || $this->phone === 'Informe seu telefone...')
         $this->errors['phone'] = 'Telefone não pode ficar em branco';
     }
 
     private function check_password() {
-      if(empty($this->id) && empty($this->password))
+      if(empty($this->id) && (empty($this->password) || $this->password === 'Informe sua senha...'))
         $this->errors['password'] = 'Senha não pode ficar em branco';
 
-      if(!empty($this->password) && strlen($this->password) < 8)
+      if(!empty($this->password) && $this->password !== 'Informe sua senha...' && strlen($this->password) < 8)
         $this->errors['password'] = 'Senha deve ter no mínimo 8 caracteres';
     }
 
