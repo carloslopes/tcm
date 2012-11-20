@@ -1,8 +1,7 @@
 <?php
 
   class Animal extends Base {
-    public $id, $name, $specie, $breed, $color, $age, $description, $history;
-    public $publisher;
+    public $id, $name, $specie, $breed, $color, $age, $description, $history, $user_id;
 
     private $COLORS = array(
       0 => 'Branco',
@@ -103,14 +102,10 @@
     public function save() {
       if($this->valid()) {
         if(empty($this->id)) {
-          $stmt = $this->conn->prepare('INSERT INTO animals (name, specie, breed, color, age, description, history) VALUES (?, ?, ?, ?, ?, ?, ?)');
-          $stmt->bind_param('sisiiss', $this->name, $this->specie, $this->breed, $this->color, $this->age, $this->description, $this->history);
+          $stmt = $this->conn->prepare('INSERT INTO animals (name, specie, breed, color, age, description, history, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+          $stmt->bind_param('sisiissi', $this->name, $this->specie, $this->breed, $this->color, $this->age, $this->description, $this->history, $this->user_id);
           $stmt->execute();
-
-          if($stmt) {
-            $this->id = mysqli_insert_id($this->conn);
-            $this->set_publisher();
-          }
+          $this->id = mysqli_insert_id($this->conn);
         }
         else {
           $stmt = $this->conn->prepare('UPDATE animals SET name = ?, specie = ?, breed = ?, color = ?, age = ?, description = ?, history = ? WHERE id = ?');
@@ -156,6 +151,7 @@
       if(isset($attrs['age'])) { $this->age = $attrs['age']; }
       if(isset($attrs['description'])) { $this->description = $attrs['description']; }
       if(isset($attrs['history'])) { $this->history = $attrs['history']; }
+      if(isset($attrs['user_id'])) { $this->user_id = $attrs['user_id']; }
     }
 
     public function specie() {
@@ -216,14 +212,6 @@
       }
 
       echo '</select>';
-    }
-
-    private function set_publisher() {
-      global $current_user;
-
-      $stmt = $this->conn->prepare('INSERT INTO publishers (animal_id, user_id) VALUES (?, ?)');
-      $stmt->bind_param('ii', $this->id, $current_user->id);
-      $stmt->execute();
     }
   }
 
