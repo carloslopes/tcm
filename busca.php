@@ -5,15 +5,15 @@
 
   switch($_GET['age']) {
     case '0':
-      $where += ' AND age BETWEEN 1 AND 3';
+      $where .= ' AND age BETWEEN 1 AND 3';
       break;
 
     case '1':
-      $where += ' AND age BETWEEN 4 AND 6';
+      $where .= ' AND age BETWEEN 4 AND 6';
       break;
 
     case '2':
-      $where += ' AND age > 6';
+      $where .= ' AND age > 6';
       break;
   }
 

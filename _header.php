@@ -44,8 +44,6 @@
         <!-- scripts -->
         <script type="text/javascript" src="/scripts/jquery/jquery.js"></script>
         <script type="text/javascript" src="/scripts/jquery/modernizr.js"></script>
-
-        <!-- filtros -->
         <script type="text/javascript" src="/scripts/filtros.js"></script>
         <script type="text/javascript" src="/scripts/login.js"></script>
 </head>

@@ -43,13 +43,6 @@
     include '../errors/404.html';
   }
 
-  function form_url($obj) {
-    if(empty($obj->id))
-      echo 'create.php';
-    else
-      echo "update.php?id=$obj->id";
-  }
-
   function sign_in($user) {
     global $current_user;
 
@@ -102,6 +95,10 @@
   function input_error($message) {
     if(!empty($message))
       echo "<span class='erro'>$message</span>";
+  }
+
+  function show($string) {
+    echo empty($string) ? '-' : $string;
   }
 
 ?>
