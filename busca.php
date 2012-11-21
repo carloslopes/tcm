@@ -22,11 +22,14 @@
 ?>
 
   <section>
+    <?php if(empty($animals)) { ?>
+    <h2>Sua busca não obteve resultados</h2>
+    <?php } else { ?>
     <h2>Resultado da busca</h2>
 
     <?php foreach($animals as $animal) { ?>
       <p><a href="/detalhes.php?id=<?php echo $animal->id ?>"><?php echo $animal->name ?></a></p>
-    <?php } ?>
+    <?php }} ?>
   </section>
 
 <?php include '_tiles.html'; include '_footer.php'; ?>
