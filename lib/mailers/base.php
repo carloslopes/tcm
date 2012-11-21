@@ -12,18 +12,17 @@
       $mail->Username = $_SERVER['SENDGRID_USERNAME'];
       $mail->Password = $_SERVER['SENDGRID_PASSWORD'];
 
-      $mail->From = 'carlos.el.lopes@gmail.com';
+      $mail->From = 'noreply@gaar.com.br';
       $mail->FromName = 'Site';
 
       $mail->isHtml(true);
-
-      $mail->SMTPDebug = 1; # Turn on only in development
+      # $mail->SMTPDebug = 1; # Turn on to show debug messages
 
       $this->mail = $mail;
     }
 
     protected function send($subject, $message, $to = 'carlos.el.lopes@gmail.com') {
-      $this->mail->AddAddress($to, 'Site');
+      $this->mail->AddAddress($to, 'Contato GAAR');
       $this->mail->Subject = $subject;
       $this->mail->Body = $message;
 
@@ -32,4 +31,3 @@
   }
 
 ?>
-

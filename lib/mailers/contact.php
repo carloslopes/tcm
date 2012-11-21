@@ -63,11 +63,12 @@
     public function send() {
       if($this->valid()) {
         $message = "<h1>Mensagem enviada pelo site</h1>
+          <p>Assunto: $this->subject<p>
           <p>Nome: $this->name</p>
           <p>E-mail: $this->email</p>
           <p>Mensagem: $this->message</p> ";
 
-        return parent::send($this->subject, $message);
+        return parent::send('Mensagem enviada pelo site', $message);
       }
       else
         return false;
