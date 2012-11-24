@@ -101,7 +101,7 @@
     }
 
     private function check_password_confirmation() {
-      if($this->password_confirmation !== $this->password)
+      if($this->password_confirmation !== $this->password && $this->password !== 'Deixe em branco para não alterar...' && $this->password_confirmation !== 'Confirme sua senha...')
         $this->errors['password_confirmation'] = 'Confirmação de senha incorreta';
     }
 
@@ -128,7 +128,7 @@
           $this->id = mysqli_insert_id($this->conn);
         }
         else {
-          if(empty($this->password)) {
+          if(empty($this->password) || $this->password === 'Deixe em branco para não alterar...') {
             $stmt = $this->conn->prepare('UPDATE users SET name = ?, email = ?, cpf = ?, address = ?, district = ?, city = ?, state = ?, phone = ?, admin = ? WHERE id = ?');
             $stmt->bind_param('ssssssssii', $this->name, $this->email, $this->cpf, $this->address, $this->district, $this->city, $this->state, $this->phone, $this->admin, $this->id);
           }

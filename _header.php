@@ -81,6 +81,7 @@
 
       <?php if(signed_in()) { ?>
       <a href="/logout.php" class="login" title="logout">logout</a>
+      <a href="/perfil.php" class="cadastrese" title="perfil">perfil</a>
       <?php } else { ?>
       <a class="login" title="login">login</a>
 
