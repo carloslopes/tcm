@@ -91,7 +91,7 @@
 
         <input type="text" class="txt-senha" name="password" value="Digite sua senha..."
           onfocus="if (this.value=='Digite sua senha...') this.value=''; this.type='password'"
-          onblur="if (this.value=='') this.value='Digite sua senha...';"
+          onblur="if (this.value=='') { this.value='Digite sua senha...'; this.type='text'; }"
         />
 
         <a href="login.php" class="cadastre" title="cadastre-se">cadastre-se</a>

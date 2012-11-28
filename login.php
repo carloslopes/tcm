@@ -93,7 +93,7 @@
         <input type="text" class="txt-user" name="email" <?php input_value('Entre com seu e-mail...', $email) ?> />
 
         <label>Senha:</label>
-        <input type="text" class="txt-senha" name="password" value="Digite sua senha..." onfocus="if (this.value=='Digite sua senha...') this.value=''; this.type='password'" onblur="if (this.value=='') this.value='Digite sua senha...';" />
+        <input type="text" class="txt-senha" name="password" value="Digite sua senha..." onfocus="if (this.value=='Digite sua senha...') this.value=''; this.type='password'" onblur="if (this.value=='') { this.value='Digite sua senha...'; this.type='text'; }" />
 
         <a href="#" title="esqueci minha senha">esqueci minha senha</a>
         <input type="submit" class="btn-logar" name="login" value="OK" />
