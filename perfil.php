@@ -43,6 +43,12 @@
 
       <strong>E-mail:</strong>
       <span><?php echo $current_user->email ?></span>
+
+      <br />
+      <h2>Meus animais</h2>
+      <?php foreach($current_user->animals() as $animal) { ?>
+      <span><a href="<?php $animal->show_path() ?>"><?php show($animal->name) ?></a> <a href="<?php $animal->edit_path() ?>">[Editar]</a></span>
+      <?php } ?>
     </div>
 
     <div class="editar-usuario">
