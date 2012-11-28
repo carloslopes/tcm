@@ -25,14 +25,17 @@
 
         <td><h4>Idade aproximada: </h4></td>
         <td><p><?php show($animal->age) ?></p></td>
+
+        <td><h4>Colocado para adoção em: </h4></td>
+        <td><p><?php show($animal->donation_date()) ?></p></td>
       </tr>
       <tr>
         <td><h4>Comportamento: </h4></td>
-        <td colspan="7"><p><?php show($animal->description) ?></p></td>
+        <td colspan="9"><p><?php show($animal->description) ?></p></td>
       </tr>
       <tr>
         <td><h4>História: </h4></td>
-        <td colspan="7"><p><?php show($animal->history) ?></p></td>
+        <td colspan="9"><p><?php show($animal->history) ?></p></td>
       </tr>
     </table>
 

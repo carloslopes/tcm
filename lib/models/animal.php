@@ -2,6 +2,7 @@
 
   class Animal extends Base {
     public $id, $name, $specie, $breed, $color, $age, $description, $history, $donor_id;
+    private $donation_date;
 
     private $COLORS = array(
       0 => 'Branco',
@@ -183,6 +184,7 @@
       if(isset($attrs['description'])) { $this->description = $attrs['description']; }
       if(isset($attrs['history'])) { $this->history = $attrs['history']; }
       if(isset($attrs['donor_id'])) { $this->donor_id = $attrs['donor_id']; }
+      if(isset($attrs['donation_date'])) { $this->donation_date = $attrs['donation_date']; }
     }
 
     public function specie() {
@@ -243,6 +245,11 @@
       }
 
       echo '</select>';
+    }
+
+    public function donation_date() {
+      $date = new DateTime($this->donation_date);
+      return date_format($date, 'd/m/Y');
     }
   }
 
