@@ -6,6 +6,8 @@
     private $encrypted_password;
     public $password, $password_confirmation;
 
+    private $animals;
+
     public function __construct($attrs = array()) {
       parent::__construct();
       $this->fill_attributes($attrs);
@@ -217,6 +219,23 @@
 
     public function admin() {
       return $this->admin == 0 ? 'Não' : 'Sim';
+    }
+
+    public function animals() {
+      if(empty($this->animals)) {
+        $id = addslashes($this->id);
+        $result = $this->conn->query("SELECT * FROM animals WHERE donor_id = $id");
+        $animals = array();
+
+        while($row = $result->fetch_assoc()) {
+          $animal = new Animal($row);
+          array_push($animals, $animal);
+        }
+
+        $this->animals = $animals;
+      }
+
+      return $this->animals;
     }
   }
 

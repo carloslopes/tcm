@@ -28,7 +28,7 @@
     <h2>Resultado da busca</h2>
 
     <?php foreach($animals as $animal) { ?>
-      <p><a href="/detalhes.php?id=<?php echo $animal->id ?>"><?php echo $animal->name ?></a></p>
+      <p><a href="<?php $animal->show_path() ?>"><?php echo $animal->name ?></a></p>
     <?php }} ?>
   </section>
 

@@ -251,6 +251,14 @@
       $date = new DateTime($this->donation_date);
       return date_format($date, 'd/m/Y');
     }
+
+    public function show_path() {
+      echo "/animal.php?id=$this->id";
+    }
+
+    public function edit_path() {
+      echo "/editar-animal.php?id=$this->id";
+    }
   }
 
 ?>
