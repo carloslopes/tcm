@@ -1,7 +1,7 @@
 <?php
 
   class Animal extends Base {
-    public $id, $name, $specie, $breed, $color, $age, $description, $history, $user_id;
+    public $id, $name, $specie, $breed, $color, $age, $description, $history, $donor_id;
 
     private $COLORS = array(
       0 => 'Branco',
@@ -133,8 +133,8 @@
     public function save() {
       if($this->valid()) {
         if(empty($this->id)) {
-          $stmt = $this->conn->prepare('INSERT INTO animals (name, specie, breed, color, age, description, history, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
-          $stmt->bind_param('sisiissi', $this->name, $this->specie, $this->breed, $this->color, $this->age, $this->description, $this->history, $this->user_id);
+          $stmt = $this->conn->prepare('INSERT INTO animals (name, specie, breed, color, age, description, history, donor_id, donation_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())');
+          $stmt->bind_param('sisiissi', $this->name, $this->specie, $this->breed, $this->color, $this->age, $this->description, $this->history, $this->donor_id);
           $stmt->execute();
           $this->id = mysqli_insert_id($this->conn);
         }
@@ -182,7 +182,7 @@
       if(isset($attrs['age'])) { $this->age = $attrs['age']; }
       if(isset($attrs['description'])) { $this->description = $attrs['description']; }
       if(isset($attrs['history'])) { $this->history = $attrs['history']; }
-      if(isset($attrs['user_id'])) { $this->user_id = $attrs['user_id']; }
+      if(isset($attrs['donor_id'])) { $this->donor_id = $attrs['donor_id']; }
     }
 
     public function specie() {

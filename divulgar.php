@@ -2,7 +2,7 @@
 
   if(is_post() && isset($_POST['cadastrar'])) {
     $animal = new Animal($_POST);
-    $animal->user_id = $current_user->id;
+    $animal->donor_id = $current_user->id;
 
     if($animal->save()) {
       $upload_errors = upload_pictures($animal, $_FILES);
