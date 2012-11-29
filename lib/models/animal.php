@@ -253,11 +253,11 @@
     }
 
     public function show_path() {
-      echo "/animal.php?id=$this->id";
+      echo "/animals/show.php?id=$this->id";
     }
 
     public function edit_path() {
-      echo "/editar-animal.php?id=$this->id";
+      echo "/animals/edit.php?id=$this->id";
     }
   }
 

@@ -1,4 +1,4 @@
-﻿<?php include '_header.php'; include '_submenu.html';
+﻿<?php include '../_header.php'; include '../_submenu.html';
 
   $klass  = new Animal();
   $animal = $klass->find($_GET['id']);
@@ -44,4 +44,4 @@
     <a href="javascript:window.history.go(-1)" title="voltar" class="voltar">voltar</a>
   </section>
 
-<?php include '_tiles.html'; include '_footer.php'; ?>
+<?php include '../_tiles.html'; include '../_footer.php'; ?>

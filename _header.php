@@ -65,7 +65,7 @@
       <li><a href="contato.php" title="contato">Contato</a></li>
       <li class="abre-filtro">
         <a href="#" title="Quer adotar?">
-          <img src="imagens/others/arrow-adotar.png" alt="" title="" height="19" width="36" />
+          <img src="/imagens/others/arrow-adotar.png" alt="" title="" height="19" width="36" />
             Quer adotar?
         </a>
       </li>
@@ -75,7 +75,7 @@
   <header>
     <div class="header-inner">
       <!-- logo -->
-      <h1><a href="/" title="GAAR - Grupo de apoio ao animal de Rua de Campinas"><img src="imagens/logo/logo-header.png" height="132" width="172" alt="GAAR - Grupo de apoio ao animal de Rua de Campinas" /></a></h1>
+      <h1><a href="/" title="GAAR - Grupo de apoio ao animal de Rua de Campinas"><img src="/imagens/logo/logo-header.png" height="132" width="172" alt="GAAR - Grupo de apoio ao animal de Rua de Campinas" /></a></h1>
 
       <h2>GAAR Campinas - Grupo de apoio ao animal de rua</h2>
 

@@ -6,7 +6,7 @@
   <footer>
     <div class="footer-inner">
       <!-- logo -->
-      <a href="index.htm" title="GAAR - Grupo de apoio ao animal de Rua de Campinas"><img src="imagens/logo/logo-footer.png" height="132" width="172" alt="GAAR - Grupo de apoio ao animal de Rua de Campinas" /></a>
+      <a href="index.htm" title="GAAR - Grupo de apoio ao animal de Rua de Campinas"><img src="/imagens/logo/logo-footer.png" height="132" width="172" alt="GAAR - Grupo de apoio ao animal de Rua de Campinas" /></a>
 
       <!-- menu footer -->
       <nav>
@@ -26,17 +26,17 @@
       <ul class="share">
         <li>
           <a href="https://www.facebook.com/gaarcampinas" target="_blank" title="facebook">
-            <img src="imagens/buttons/facebook.jpg" height="31" width="30" alt="facebook" title="facebook" />
+            <img src="/imagens/buttons/facebook.jpg" height="31" width="30" alt="facebook" title="facebook" />
           </a>
         </li>
         <li>
           <a href="https://twitter.com/gaar_campinas" target="_blank" title="twitter">
-            <img src="imagens/buttons/twitter.jpg" height="31" width="30" alt="twitter" title="twitter" />
+            <img src="/imagens/buttons/twitter.jpg" height="31" width="30" alt="twitter" title="twitter" />
           </a>
         </li>
         <li>
           <a href="http://gaarcampinas.tumblr.com/" target="_blank" title="tumblr">
-            <img src="imagens/buttons/tumblr.jpg" height="31" width="30" alt="tumblr" title="tumblr" />
+            <img src="/imagens/buttons/tumblr.jpg" height="31" width="30" alt="tumblr" title="tumblr" />
           </a>
         </li>
       </ul>
