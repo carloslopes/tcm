@@ -2,7 +2,7 @@
 
   class Animal extends Base {
     public $id, $name, $specie, $breed, $color, $age, $description, $history, $donor_id;
-    private $donation_date;
+    private $donor, $donation_date;
 
     private $COLORS = array(
       0 => 'Branco',
@@ -258,6 +258,16 @@
 
     public function edit_path() {
       echo "/animals/edit.php?id=$this->id";
+    }
+
+    public function donor() {
+      if(empty($this->donor)) {
+        $id = addslashes($this->donor_id);
+        $result = $this->conn->query("SELECT * FROM users WHERE id = $id");
+        $this->donor = new User($result->fetch_assoc());
+      }
+
+      return $this->donor;
     }
   }
 
