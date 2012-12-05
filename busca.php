@@ -1,7 +1,7 @@
 <?php include '_header.php'; include '_submenu.html';
 
   $klass = new Animal();
-  $where = "specie = '{$_GET['specie']}' AND breed LIKE '{$_GET['breed']}' AND color LIKE '{$_GET['color']}' AND description LIKE '%{$_GET['description']}%'";
+  $where = "specie = '{$_GET['specie']}' AND breed LIKE '{$_GET['breed']}' AND color LIKE '{$_GET['color']}' AND description LIKE '%{$_GET['description']}%' AND status = 0";
 
   switch($_GET['age']) {
     case '0':

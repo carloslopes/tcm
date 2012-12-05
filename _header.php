@@ -36,6 +36,7 @@
         <link rel="stylesheet" href="/css/geral.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="/css/home.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="/css/formularios.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="/css/tables.css" media="screen" />
 
         <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
         <link rel='shortcut icon' href='favicon.ico' />

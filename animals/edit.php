@@ -16,7 +16,7 @@
 ?>
 
   <section>
-  <?php if(signed_in()) { ?>
+  <?php if(signed_in() && $current_user->id === $animal->donor()->id) { ?>
     <h2>Perfil</h2>
 
     <div class="lista-usuario">
@@ -43,11 +43,22 @@
       <strong>História:</strong>
       <span><?php echo $animal->history ?></span>
 
+      <strong>Status:</strong>
+      <span><?php echo $animal->status() ?></span>
+
       <strong>Publicado por:</strong>
       <span><?php echo $animal->donor()->name ?></span>
 
       <strong>Data da publicação:</strong>
       <span><?php echo $animal->donation_date() ?></span>
+
+      <?php if($animal->adopted()) { ?>
+      <strong>Adotado por:</strong>
+      <span><?php echo $animal->adopter()->name ?></span>
+
+      <strong>Data da adoção:</strong>
+      <span><?php echo $animal->adoption_date() ?></span>
+      <?php } ?>
     </div>
 
     <div class="editar-usuario">
@@ -82,13 +93,17 @@
         <textarea name="history"><?php echo $editable_animal->history ?></textarea>
         <?php input_error($editable_animal->errors['history']) ?>
 
+        <label>Status:</label>
+        <?php $editable_animal->status_radio_tag() ?>
+        <?php input_error($editable_animal->errors['status']) ?>
+
         <input type="submit" class="btn-cadastrar" value="Salvar" name="editar-animal" />
       </form>
     </div>
 
     <a href="javascript:window.history.go(-1)" title="voltar" class="voltar">voltar</a>
   <?php } else { ?>
-    <h2>Para editar um animal você precisa estar logado</h2>
+    <h2>Para editar um animal você precisa estar logado e ser o dono do mesmo</h2>
   <?php } ?>
   </section>
 

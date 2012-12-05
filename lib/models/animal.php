@@ -2,7 +2,7 @@
 
   class Animal extends Base {
     public $id, $name, $specie, $breed, $color, $age, $description, $history, $donor_id;
-    private $donor, $donation_date;
+    private $donor, $donation_date, $adopter_id, $adopter, $adoption_date, $status;
 
     private $COLORS = array(
       0 => 'Branco',
@@ -24,8 +24,15 @@
       4 => 'Egípcio'
     );
 
+    private $STATUS = array(
+      0 => 'Para adoção',
+      1 => 'Em análise',
+      2 => 'Adotado'
+    );
+
     public function __construct($attrs = array()) {
       parent::__construct();
+      $this->status = 0;
       $this->fill_attributes($attrs);
     }
 
@@ -39,6 +46,7 @@
       $this->check_age();
       $this->check_description();
       $this->check_history();
+      $this->check_status();
 
       return empty($this->errors);
     }
@@ -86,41 +94,18 @@
         $this->errors['history'] = 'História do animal não pode ficar em branco';
     }
 
+    private function check_status() {
+      if(!isset($this->status))
+        $this->errors['status'] = 'O status deve ser informado';
+      else if(!array_key_exists($this->status, $this->STATUS))
+        $this->errors['status'] = 'Informe um status válido';
+    }
+
     ### Db queries
     ### ==================================
     public function all($where = null) {
       if(!empty($where)) $where = 'WHERE ' . $where;
       $result = $this->conn->query("SELECT * FROM animals $where");
-      $animals = array();
-
-      while($row = $result->fetch_assoc()) {
-        $animal = new Animal($row);
-        array_push($animals, $animal);
-      }
-
-      return $animals;
-    }
-
-    public function search($specie, $breed, $color, $age, $description) {
-      switch($age) {
-        case '%':
-          $age_query = '';
-          break;
-
-        case '0':
-          $age_query = 'AND age BETWEEN 1 AND 3';
-          break;
-
-        case '1':
-          $age_query = 'AND age BETWEEN 4 AND 6';
-          break;
-
-        case '2':
-          $age_query = 'AND age > 6';
-          break;
-      }
-
-      $result = $this->conn->query("SELECT * FROM animals WHERE specie = '$specie' AND breed LIKE '$breed' AND color LIKE '$color' $age AND description LIKE '%$description%'");
       $animals = array();
 
       while($row = $result->fetch_assoc()) {
@@ -140,8 +125,8 @@
           $this->id = mysqli_insert_id($this->conn);
         }
         else {
-          $stmt = $this->conn->prepare('UPDATE animals SET name = ?, specie = ?, breed = ?, color = ?, age = ?, description = ?, history = ? WHERE id = ?');
-          $stmt->bind_param('sisiissi', $this->name, $this->specie, $this->breed, $this->color, $this->age, $this->description, $this->history, $this->id);
+          $stmt = $this->conn->prepare('UPDATE animals SET name = ?, specie = ?, breed = ?, color = ?, age = ?, description = ?, history = ?, status = ? WHERE id = ?');
+          $stmt->bind_param('sisiissii', $this->name, $this->specie, $this->breed, $this->color, $this->age, $this->description, $this->history, $this->status, $this->id);
           $stmt->execute();
         }
 
@@ -185,6 +170,9 @@
       if(isset($attrs['history'])) { $this->history = $attrs['history']; }
       if(isset($attrs['donor_id'])) { $this->donor_id = $attrs['donor_id']; }
       if(isset($attrs['donation_date'])) { $this->donation_date = $attrs['donation_date']; }
+      if(isset($attrs['adopter_id'])) { $this->adopter_id = $attrs['adopter_id']; }
+      if(isset($attrs['adoption_date'])) { $this->adoption_date = $attrs['adoption_date']; }
+      if(isset($attrs['status'])) { $this->status = $attrs['status']; }
     }
 
     public function specie() {
@@ -197,6 +185,10 @@
 
     public function breed() {
       return $this->BREEDS[$this->breed];
+    }
+
+    public function status() {
+      return $this->STATUS[$this->status];
     }
 
     public function pictures() {
@@ -220,6 +212,15 @@
       foreach($this->SPECIES as $key => $value) {
         $checked_str = ($key == $checked) ? 'checked="checked"' : '';
         echo "<input type='radio' name='specie' $checked_str value='$key' />$value";
+      }
+    }
+
+    public function status_radio_tag() {
+      $checked = empty($this->status) ? 0 : $this->status;
+
+      foreach($this->STATUS as $key => $value) {
+        $checked_str = ($key == $checked) ? 'checked="checked"' : '';
+        echo "<input type='radio' name='status' $checked_str value='$key' />$value";
       }
     }
 
@@ -252,12 +253,22 @@
       return date_format($date, 'd/m/Y');
     }
 
+    public function adoption_date() {
+      if(empty($this->adoption_date)) return null;
+      $date = new DateTime($this->adoption_date);
+      return date_format($date, 'd/m/Y');
+    }
+
     public function show_path() {
       echo "/animals/show.php?id=$this->id";
     }
 
     public function edit_path() {
       echo "/animals/edit.php?id=$this->id";
+    }
+
+    public function adopt_path() {
+      echo "/animals/adopt.php?id=$this->id";
     }
 
     public function donor() {
@@ -268,6 +279,27 @@
       }
 
       return $this->donor;
+    }
+
+    public function adoption($user_id) {
+      $stmt = $this->conn->prepare('UPDATE animals SET adopter_id = ?, adoption_date = NOW(), status = 1 WHERE id = ?');
+      $stmt->bind_param('ii', $user_id, $this->id);
+      $stmt->execute();
+    }
+
+    public function adopter() {
+      if(empty($this->adopter) && !empty($this->adopter_id)) {
+        $id = addslashes($this->adopter_id);
+        $result = $this->conn->query("SELECT * FROM users WHERE id = $id");
+        $this->adopter = new User($result->fetch_assoc());
+      }
+
+      return $this->adopter;
+    }
+
+    public function adopted() {
+      $adopter = $this->adopter();
+      return !empty($adopter);
     }
   }
 
