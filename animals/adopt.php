@@ -5,8 +5,12 @@
   $adoption;
 
   if(signed_in() && !$animal->adopted() && $animal->donor()->id !== $current_user->id) {
-    $animal->adoption($current_user->id);
     $adoption = true;
+
+    $animal->adoption($current_user->id);
+
+    $mailer = new AnimalMailer();
+    $mailer->adoption($animal, $animal->donor(), $current_user);
   }
 
 ?>

@@ -298,8 +298,7 @@
     }
 
     public function adopted() {
-      $adopter = $this->adopter();
-      return !empty($adopter);
+      return $this->status != 0;
     }
   }
 

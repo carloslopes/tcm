@@ -16,6 +16,7 @@
   include 'phpmailer/class.smtp.php';
   include 'mailers/base.php';
   include 'mailers/contact.php';
+  include 'mailers/animals.php';
 
   # Bcrypt
   include 'phpass-0.3/PasswordHash.php';
