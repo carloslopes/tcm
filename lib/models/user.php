@@ -6,7 +6,7 @@
     private $encrypted_password;
     public $password, $password_confirmation;
 
-    private $animals;
+    private $donations, $adoptions;
 
     public function __construct($attrs = array()) {
       parent::__construct();
@@ -221,8 +221,8 @@
       return $this->admin == 0 ? 'Não' : 'Sim';
     }
 
-    public function animals() {
-      if(empty($this->animals)) {
+    public function donations() {
+      if(empty($this->donations)) {
         $id = addslashes($this->id);
         $result = $this->conn->query("SELECT * FROM animals WHERE donor_id = $id");
         $animals = array();
@@ -232,10 +232,27 @@
           array_push($animals, $animal);
         }
 
-        $this->animals = $animals;
+        $this->donations = $animals;
       }
 
-      return $this->animals;
+      return $this->donations;
+    }
+
+    public function adoptions() {
+      if(empty($this->adoptions)) {
+        $id = addslashes($this->id);
+        $result = $this->conn->query("SELECT * FROM animals WHERE adopter_id = $id AND status IN (1,2)");
+        $animals = array();
+
+        while($row = $result->fetch_assoc()) {
+          $animal = new Animal($row);
+          array_push($animals, $animal);
+        }
+
+        $this->adoptions = $animals;
+      }
+
+      return $this->adoptions;
     }
   }
 

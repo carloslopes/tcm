@@ -44,10 +44,22 @@
       <strong>E-mail:</strong>
       <span><?php echo $current_user->email ?></span>
 
+      <?php $donations = $current_user->donations() ?>
+      <?php if(!empty($donations)) { ?>
       <br />
-      <h2>Meus animais</h2>
-      <?php foreach($current_user->animals() as $animal) { ?>
-      <span><a href="<?php $animal->show_path() ?>"><?php show($animal->name) ?></a> <a href="<?php $animal->edit_path() ?>">[Editar]</a></span>
+      <h2>Minhas doações</h2>
+        <?php foreach($donations as $animal) { ?>
+        <span><a href="<?php $animal->show_path() ?>"><?php show($animal->name) ?></a> <a href="<?php $animal->edit_path() ?>">[Editar]</a></span>
+        <?php } ?>
+      <?php } ?>
+
+      <?php $adoptions = $current_user->adoptions() ?>
+      <?php if(!empty($adoptions)) { ?>
+      <br />
+      <h2>Minhas adoções</h2>
+        <?php foreach($adoptions as $animal) { ?>
+        <span><a href="<?php $animal->show_path() ?>"><?php show($animal->name) ?></a></span>
+        <?php } ?>
       <?php } ?>
     </div>
 
