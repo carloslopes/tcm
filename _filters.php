@@ -1,5 +1,5 @@
 <?php
-  $animal = new Animal();
+  $filter_animal = new Animal();
 ?>
 
 <section class="filtros">
@@ -9,13 +9,13 @@
     <form action="/busca.php" class="filtro-animal" method="get">
       <div class="col-left">
         <label>Espécie:</label>
-        <?php $animal->species_radio_tag() ?>
+        <?php $filter_animal->species_radio_tag() ?>
 
         <label>Raça:</label>
-        <?php $animal->breeds_select_tag() ?>
+        <?php $filter_animal->breeds_select_tag() ?>
 
         <label>Cor:</label>
-        <?php $animal->colors_select_tag() ?>
+        <?php $filter_animal->colors_select_tag() ?>
       </div><!-- /.col-left -->
       <div class="col-right">
         <label>Idade:</label>

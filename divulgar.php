@@ -1,4 +1,4 @@
-﻿<?php include '_header.php'; include '_submenu.html';
+﻿<?php include_once 'lib/functions.php';
 
   if(is_post() && isset($_POST['cadastrar'])) {
     $animal = new Animal($_POST);
@@ -8,18 +8,19 @@
       $upload_errors = upload_pictures($animal, $_FILES);
 
       if(empty($upload_errors))
-        echo '<h2>Animal cadastrado com sucesso</h2>';
+        success_message('Animal cadastrado com sucesso');
       else
-        echo '<h2>Erro ao realizar upload de uma ou mais fotos</h2>';
+        error_message('Erro ao realizar upload de uma ou mais fotos');
 
       $animal = new Animal();
     }
     else
-      echo '<h2>Erro ao cadastrar animal, corriga os campos e tente novamente</h2>';
+      error_message('Erro ao cadastrar animal, corriga os campos e tente novamente');
   }
   else
     $animal = new Animal();
 
+  include '_header.php'; include '_submenu.html';
 ?>
 
                 <!-- Apresentação -->

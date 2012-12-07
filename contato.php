@@ -1,18 +1,19 @@
-﻿<?php include '_header.php'; include '_submenu.html';
+﻿<?php include_once 'lib/functions.php';
 
   if(is_post() && isset($_POST['contact'])) {
     $contact = new Contact($_POST);
 
     if($contact->send()) {
-      echo '<h2>Mensagem enviada com sucesso</h2>';
+      success_message('Mensagem enviada com sucesso');
       $contact = new Contact();
     }
     else
-      echo '<h2>Erro ao enviar mensagem, tente novamente</h2>';
+      error_message('Erro ao enviar mensagem, tente novamente');
   }
   else
     $contact = new Contact();
 
+  include '_header.php'; include '_submenu.html';
 ?>
 
   <section>

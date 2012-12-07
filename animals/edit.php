@@ -1,4 +1,4 @@
-﻿<?php include '../_header.php'; include '../_submenu.html';
+﻿<?php include_once '../lib/functions.php';
 
   $klass  = new Animal();
   $animal = $klass->find($_GET['id']);
@@ -7,12 +7,13 @@
   if(isset($_POST['editar-animal'])) {
     if($editable_animal->update_attributes($_POST)) {
       $animal = $editable_animal;
-      echo '<h2>Animal atualizado com sucesso!</h2>';
+      success_message('Animal atualizado com sucesso!');
     }
     else
-      echo '<h2>Erro ao editar o animal, corriga os campos e tente novamente</h2>';
+      error_message('Erro ao editar o animal, corriga os campos e tente novamente');
   }
 
+  include '../_header.php'; include '../_submenu.html';
 ?>
 
   <section>

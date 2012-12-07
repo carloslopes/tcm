@@ -6,10 +6,10 @@
     $user  = $klass->authenticate($email, $_POST['password']);
 
     if(empty($user))
-      echo '<h2>Email ou senha incorretos, tente novamente.</h2>';
+      error_message('Email ou senha incorretos, tente novamente.');
     else {
       sign_in($user);
-      echo '<h2>Login realizado com sucesso.</h2>';
+      success_message('Login realizado com sucesso');
     }
   }
 
@@ -106,3 +106,4 @@
   </header>
 
   <div class="content">
+    <?php if(isset($message)) echo $message ?>

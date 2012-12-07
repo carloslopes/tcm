@@ -1,16 +1,17 @@
-﻿<?php include '_header.php'; include '_submenu.html';
+﻿<?php include_once 'lib/functions.php';
 
   $user = $current_user->find($current_user->id);
 
   if(isset($_POST['editar-perfil'])) {
     if($user->update_attributes($_POST)) {
       $current_user = $user;
-      echo '<h2>Perfil atualizado com sucesso!</h2>';
+      success_message('Perfil atualizado com sucesso!');
     }
     else
-      echo '<h2>Erro ao editar perfil, corriga os campos e tente novamente</h2>';
+      error_message('Erro ao editar perfil, corriga os campos e tente novamente');
   }
 
+  include '_header.php'; include '_submenu.html';
 ?>
 
   <section>
