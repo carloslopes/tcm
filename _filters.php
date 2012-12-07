@@ -16,7 +16,8 @@
 
         <label>Cor:</label>
         <?php $animal->colors_select_tag() ?>
-
+      </div><!-- /.col-left -->
+      <div class="col-right">
         <label>Idade:</label>
         <select name="age">
           <option value="%">Informe a idade aproximada do animal...</option>
@@ -25,10 +26,9 @@
           <option value="2">mais de 6 anos</option>
         </select>
 
-      </div><!-- /.col-left -->
-      <div class="col-right">
         <label>Comportamento:</label>
-        <textarea name="description"></textarea>
+        <input type="text" class="descricao" name="description" />
+
         <input type="submit" class="btn-encontrar" value="Encontrar" />
       </div><!-- /.col-right -->
     </form>
