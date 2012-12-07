@@ -157,8 +157,9 @@
       return $this->save($this->conn);
     }
 
-    public function last($offset) {
-      $query = $this->conn->query("SELECT * FROM animals ORDER BY id DESC LIMIT $offset");
+    public function last($offset, $status = '0,1,2') {
+      $status = addslashes($status);
+      $query = $this->conn->query("SELECT * FROM animals WHERE status IN ($status) ORDER BY id DESC LIMIT $offset");
       $animals = array();
 
       while($row = $query->fetch_assoc()) {

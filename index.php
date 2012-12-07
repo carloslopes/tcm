@@ -1,7 +1,7 @@
 <?php include '_header.php';
 
   $klass   = new Animal();
-  $animals = $klass->last(5);
+  $animals = $klass->last(5, '0');
 
 ?>
 
