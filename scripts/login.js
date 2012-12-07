@@ -16,26 +16,4 @@ $(document).ready(function(){
 
 	});
 
-	//selecionar e exibir cadastro
-
-	$('.cadastrar').show();
-	$('.cadastrar-veterinario').hide();
-	$('.cadastrar-usuario').hide();
-
-	$('.abre-cadastro-pessoal').click(function(){
-
-		$('.cadastrar').hide();
-		$('.cadastrar-veterinario').hide();
-		$('.cadastrar-usuario').slideDown('slow');
-
-	});
-
-	$('.abre-cadastro-profissional').click(function(){
-
-		$('.cadastrar').hide();
-		$('.cadastrar-usuario').hide();
-		$('.cadastrar-veterinario').slideDown('slow');
-
-	});
-
 });
