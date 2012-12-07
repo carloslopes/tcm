@@ -37,7 +37,7 @@
         <td><h4>História: </h4></td>
         <td colspan="3"><p><?php show($animal->history) ?></p></td>
         <td></td>
-        <?php if(!$animal->adopted() && $animal->donor_id !== $current_user->id) { ?>
+        <?php if(signed_in() && !$animal->adopted() && $animal->donor_id !== $current_user->id) { ?>
         <td colspan="2">
           <a href="<?php $animal->adopt_path() ?>">Quero adotar!</a>
         </td>
