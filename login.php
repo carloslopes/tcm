@@ -29,7 +29,7 @@
 
       <ul>
         <li><a href="#" class="abre-cadastro-pessoal">Cadastro pessoal</a></li>
-        <li><a href="#" class="abre-cadastro-profissional">Cadastro do profissional</a></li>
+        <!--<li><a href="#" class="abre-cadastro-profissional">Cadastro do profissional</a></li>-->
       </ul>
 
     </div><!-- /.cadastrar -->
