@@ -157,6 +157,18 @@
       return $this->save($this->conn);
     }
 
+    public function last($offset) {
+      $query = $this->conn->query("SELECT * FROM animals ORDER BY id DESC LIMIT $offset");
+      $animals = array();
+
+      while($row = $query->fetch_assoc()) {
+        $animal = new Animal($row);
+        array_push($animals, $animal);
+      }
+
+      return $animals;
+    }
+
     ### Helpers Methods
     ### ==================================
     private function fill_attributes($attrs) {

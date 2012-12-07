@@ -11,7 +11,7 @@
         com essa pessoa para dar continuidade no processo.</p>
         <p>Atenciosamente, equipe GAAR</p>";
 
-      return parent::send('Aviso GAAR', $message);
+      return parent::send('Aviso GAAR', $message, $donor->email);
     }
   }
 

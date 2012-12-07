@@ -2,3 +2,4 @@
 .vagrant
 Vagrantfile
 Guardfile
+.DS_Store
