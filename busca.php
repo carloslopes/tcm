@@ -42,14 +42,14 @@
               <td><?php echo $animal->specie() ?></td>
               <td><h4>Raça: </h4></td>
               <td><?php echo $animal->breed() ?></td>
-              <td rowspan="2"><h4>Comportamento: </h4></td>
-              <td rowspan="2"><?php echo $animal->description ?></td>
-            </tr>
-            <tr>
               <td><h4>Cor: </h4></td>
               <td><?php echo $animal->color() ?></td>
+            </tr>
+            <tr>
               <td><h4>Idade aproximada: </h4></td>
               <td><?php show($animal->age) ?></td>
+              <td><h4>Comportamento: </h4></td>
+              <td colspan="3"><?php echo $animal->description ?></td>
             </tr>
           </table>
         </a>

@@ -175,6 +175,97 @@ section ul li:last-child {
 	margin:0 0 0 0;
 }
 
+/* resultado da busca */
+
+section.resultado-busca ul {
+	float:left;
+	margin:20px 0 0 0;
+	width:100%;
+}
+
+section.resultado-busca ul li {
+	box-shadow:none;
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none;
+	border-bottom:1px solid #999;
+	display:block;
+	float:none;
+	height:140px;
+	padding:40px 0;
+	width:100%;
+}
+
+section.resultado-busca ul li:hover {
+	background:#f9f9f9;
+}
+
+section.resultado-busca ul li a {
+	
+}
+
+section.resultado-busca ul li a img {
+	float:left;
+	margin:0 20px 0 0 ;
+}
+
+section.resultado-busca ul li a h3.nome-animal {
+	background:none;
+	border:none;
+	border:0; 
+	border-bottom: 2px solid #999;
+	float:left;
+	font-size:25px;
+	margin:0 0 0 0;
+	padding:0 0 20px 0;
+	width:740px;
+}
+
+section.resultado-busca ul li a table {
+	border:none;
+	border:0; 
+}
+
+section.resultado-busca ul li a table tr {
+	height:50px;
+}
+
+section.resultado-busca ul li a table tr td {
+	padding:0 10px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+section.resultado-busca ul li a table tr td h4 {
+	font-weight:bold;
+}
+
+section.resultado-busca ul li a table tr td p {
+	margin:0 0 0 0;
+}
+
+table.detalhes {
+	border:none;
+	border:0; 
+}
+
+table.detalhes tr {
+	height:50px;
+}
+
+table.detalhes tr td {
+	padding:10px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+table.detalhes tr td h4 {
+	font-weight:bold;
+}
+
+table.detalhes tr td p {
+	margin:0 0 0 0;
+}
+
 /*
 	box slider
 */
