@@ -66,7 +66,7 @@
       <li><a href="contato.php" title="contato">Contato</a></li>
       <li class="abre-filtro">
         <a href="#" title="Quer adotar?">
-          <img src="/imagens/others/arrow-adotar.png" alt="" title="" height="19" width="36" />
+          <img id="arrow-adotar" src="/imagens/others/arrow-adotar.png" alt="" title="" height="19" width="36" />
             Quer adotar?
         </a>
       </li>
