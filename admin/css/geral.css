@@ -1,0 +1,193 @@
+/* wrapper */
+
+.wrapper { min-height:100%; position:relative; width:100%; }
+
+/* filtros */
+
+.filtros { background:#ff7f00; box-shadow:0 2px 5px #000; -moz-box-shadow:0 2px 5px #000; -webkit-box-shadow:0 2px 5px #000; padding:60px 0;
+	position:absolute; width:100%; z-index:2; }
+
+.filtrar-animal { color:#fff; font-size:12px; font-weight:bold; margin:20px auto 40px; width:960px; }
+
+.filtrar-animal h2 { border-bottom: 2px solid #fff; color:#fff; text-shadow:1px 1px 3px #000; }
+
+.filtro-animal { margin:0 0 0 0; padding:0 0 0 0; }
+
+.filtro-animal .col-left { float:left; }
+
+.filtro-animal .col-right { float:right; }
+
+.filtro-animal label,
+.filtro-animal span { display:block; font-size:14px; margin:10px 0; text-shadow:1px 1px 3px #000; }
+
+.filtro-animal span { text-shadow:1px 1px 3px #fff; }
+
+.filtro-animal input[type="text"],
+
+.filtro-animal textarea,
+.filtro-animal select { background:#fff; border:1px solid #999; display:block; padding:5px; width:410px }
+
+.filtro-animal textarea { height:200px; }
+
+.filtro-animal input[type="submit"]{ background:#f9f9f9; border:1px solid #999; cursor:pointer; float:right; margin:20px 0; padding:7px 12px; }
+
+.filtro-animal input[type="submit"]:hover { background:#999; border:1px solid #f9f9f9; color:#fff; }
+
+/* menu */
+
+nav { background:#ff7f00; box-shadow:0 2px 5px #000; -moz-box-shadow:0 2px 5px #000; -webkit-box-shadow:0 2px 5px #000; height:50px; position:relative;
+	width:100%; z-index:3; }
+
+nav ul { margin:0 auto; width:960px; }
+nav ul li { display:inline; float:left; }
+nav ul li:hover { background:#000; opacity:0.5; -moz-opacity:0.5; }
+nav ul li a { color:#fff; float:left; font-size:16px; padding:17px; text-shadow:2px 2px 3px #000; }
+nav ul li.abre-filtro { background:#000; float:right; height:90px; width:200px; }
+nav ul li.abre-filtro a { font-size:20px; font-weight:bold; text-align:center; }
+nav ul li.abre-filtro a img { margin:0 50px 20px 50px; }
+
+/* header */
+
+header { background:#402000; box-shadow:0 2px 5px #000; -moz-box-shadow:0 2px 5px #000; -webkit-box-shadow:0 2px 5px #000; height:150px; margin:0 auto;
+	width:100%; }
+
+header .header-inner { margin:0 auto; width:960px; }
+header .header-inner h1 { float:left; margin:10px 0; }
+
+/* slogan */
+
+header .header-inner h2 { color:#fff; float:left; font-size:23px; margin:85px 0 0 30px; text-shadow:1px 1px 3px #000; }
+
+/* search */
+/*
+header .header-inner form.search { background:#fff; float:right; margin:40px 0 0 0; padding:5px; }
+header .header-inner form.search input[type="text"] { background:#fff; border:none; border:0; color:#666; float:left; padding:0 5px; width:160px; }
+header .header-inner form.search input[type="submit"] { background:url(../imagens/others/lupa.jpg) no-repeat; border:none; border:0; float:left;
+	height:20px; width:21px; }
+*/
+/* login */
+
+header .header-inner a.login { background:#ff7f00; color:#000; cursor:pointer; float:right; font-size:12px; font-weight:bold; margin:80px -200px 0 0;
+	padding:10px 30px; }
+
+header .header-inner a.login:hover { background:#000; color:#ff7f00; }
+
+header .header-inner a.cadastrese { color:#ff7f00; float:right; font-size:12px; margin:50px 30px 0 0; z-index:0; }
+
+/* logar */
+
+header .header-inner form.logar { float:right; font-size:12px; height:90px; margin:40px -195px 0 0; padding:5px; width:190px; }
+header .header-inner form.logar input[type="text"] { background:#fff; border:none; border:0; color:#666; float:left; margin:10px 0 0 0; padding:5px;
+	width:190px; }
+header .header-inner form.logar input[type="password"] { background:#fff; border:none; border:0; color:#666; float:left; margin:10px 0 0 0; padding:5px;
+	width:190px; }
+header .header-inner form.logar input[type="submit"] { background:none; border:none; border:0; color:#ff7f00; cursor:pointer; float:right;
+	font-weight:bold; height:30px; margin:2px -15px 0 0; width:30px; }
+header .header-inner form.logar a.cadastre { color:#ff7f00; float:left; font-size:12px; margin:10px 0 0 0; z-index:0; }
+
+/* content */
+
+.content { margin:20px auto; padding:0 0 220px 0; width:960px; }
+
+/* submenu */
+
+.content nav { background:#e4e4e4; box-shadow:0 2px 5px #000; -moz-box-shadow:0 2px 5px #000; -webkit-box-shadow:0 2px 5px #000; float:left; height:50px;
+	margin:20px 0; position:relative; width:100%; z-index:1; }
+
+.content nav ul { margin:0 auto; padding:0 0 0 10px; width:950px; }
+.content nav ul li { display:inline; float:left; padding:12px 10px; margin:5px 0; }
+.content nav ul li:hover { background:#fff; opacity:1; -moz-opacity:1; }
+.content nav ul li.division:hover { background:none; opacity:1; -moz-opacity:1; }
+.content nav ul li a { color:#000; float:left; font-size:15px; padding:0; text-shadow:none; }
+
+.content .login { text-align: center; margin: 100px 0 0 0; }
+
+.content .login form.form-login { box-shadow:5px 5px 15px #000;  background:#402000; font-weight: bold; text-align: center; margin:30px auto; padding:20px; width: 200px;  }
+
+.content .login p { color:#fff; margin:10px 0; }
+
+.content .login p input[type="text"],
+.content .login p input[type="password"]{ color:#402000; border: 1px solid #ccc; background:#f5f5f5; padding: 5px;}
+
+.content table { float: left; width:100%; }
+
+.content table tr th {color:#fff; border:1px solid #fff; background:#402000; font-weight: bold; padding:10px;text-align:center; }
+
+.content table tr td { border:1px solid #fff; background:#f5f5f5;padding: 10px; text-align:center; }
+
+.content table tr td a { color:#000; font-weight:bold; }
+
+/*
+	section
+*/
+
+section {
+	float:left;
+	margin:0 0 20px 0;
+	width:100%;
+}
+
+section h2 {
+	border-bottom:2px solid #402000;
+	color:#402000;
+	font-size:18px;
+	font-weight:bold;
+	margin:20px 0 40px 0;
+	padding:0 0 20px 0;
+	text-transform:uppercase;
+	width:100%;
+}
+
+section h3 {
+	background:#f9f9f9;
+	border:1px solid #999;
+	color:#666;
+	font-size:16px;
+	font-weight:bold;
+	margin:20px 0 20px 0;
+	padding:10px;
+	width:938px;
+}
+
+section p {
+	color:#666;
+	font-size:14px;
+	margin:20px 0 20px 0;
+}
+
+section a {
+	color:#666;
+	font-weight:bold;
+}
+
+section a.voltar {
+	border-top:1px solid #666;
+	color:#666;
+	float:left;
+	font-weight:bold;
+	padding:20px 0 0 0;
+	width:960px;
+}
+
+section a:hover {
+	text-decoration:underline;
+}
+
+section ul {
+	float:left;
+	margin:20px 0 0 0;
+}
+
+section ul li {
+	box-shadow:0 0 5px #000;
+	-moz-box-shadow:0 0 5px #000;
+	-webkit-box-shadow:0 0 5px #000;
+	float:left;
+	height:140px;
+	margin:0 20px 0 0;
+	width:176px;
+}
+
+section ul li:last-child {
+	margin:0 0 0 0;
+}

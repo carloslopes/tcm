@@ -1,0 +1,99 @@
+/* erros */
+
+.erro { color:#900; font-size:12px; font-weight:bold; }
+
+/* contato */
+
+.contato { float:left; margin:0 20px 20px 0; width:450px; }
+
+.contato label, span { display:block; font-size:14px; margin:10px 0; }
+
+.contato input[type="text"],
+.contato textarea,
+.contato select { background:#f9f9f9; border:1px solid #999; display:block; padding:5px; width:440px }
+
+.contato textarea {height:200px;}
+
+.contato input[type="submit"] { background:#f9f9f9; border:1px solid #999; cursor:pointer; float:right; padding:7px 12px; }
+.contato input[type="submit"]:hover { background:#999; border:1px solid #f9f9f9; color:#fff; }
+
+/* cadastrar */
+
+.cadastrar, 
+.cadastrar-usuario,
+.cadastrar-veterinario,
+.cadastrar-animal,
+.lista-usuario,
+.editar-usuario,
+.lista-veterinario,
+.editar-veterinario { background:#f9f9f9; float:left; margin:0 0 40px 0; padding:0 20px; width:420px; }
+
+.cadastrar { background:#fff; }
+
+.cadastrar ul {  }
+.cadastrar ul li { box-shadow:none; -moz-box-shadow:none; -webkit-box-shadow:none; float:none; height:auto; width:auto; }
+.cadastrar ul li a { background:#f9f9f9; float:left; margin:0 0 20px 0; padding:20px; text-align:center; width:380px; }
+.cadastrar ul li a:hover { background:#ff7f00; color:#fff; text-decoration:none; }
+
+.cadastrar h2,
+.cadastrar-usuario h2,
+.cadastrar-veterinario h2,
+.cadastrar-animal h2{ border-bottom:0; border-bottom:none; margin-bottom:0; }
+
+.cadastro-usuario,
+.cadastro-profissional,
+.cadastro-animal { margin:0 0 0 0; padding:0 0 0 0; }
+
+.cadastro-usuario label,
+.cadastro-profissional label,
+.cadastro-animal label, span { display:block; font-size:14px; margin:10px 0; }
+
+.cadastro-usuario input[type="text"],
+.cadastro-profissional input[type="text"],
+.cadastro-animal input[type="text"],
+
+.cadastro-usuario textarea,
+.cadastro-profissional textarea,
+.cadastro-animal textarea,
+
+.cadastro-usuario input[type="password"],
+.cadastro-usuario select,
+.cadastro-animal select{ background:#fff; border:1px solid #999; display:block; padding:5px; width:410px }
+
+.cadastro-usuario textarea,
+.cadastro-profissional textarea,
+.cadastro-animal textarea { height:200px; }
+
+.cadastro-usuario input[type="submit"],
+.cadastro-profissional input[type="submit"],
+.cadastro-animal input[type="submit"]{ background:#f9f9f9; border:1px solid #999; cursor:pointer; float:right; margin:20px 0; padding:7px 12px; }
+
+.cadastro-usuario input[type="submit"]:hover,
+.cadastro-profissional input[type="submit"]:hover,
+.cadastro-animal input[type="submit"]:hover { background:#999; border:1px solid #f9f9f9; color:#fff; }
+
+.cadastro-animal { font-size:12px; }
+
+.lista-usuario,
+.lista-veterinario { margin:0 40px 0 0; }
+
+/* login-painel */
+
+.login-painel { background:#f9f9f9; float:right; margin:0 0 40px 0; padding:0 20px; width:420px; }
+.login-painel h2 { border-bottom:0; border-bottom:none; margin-bottom:0; }
+
+.form-login { margin:0 0 0 0; padding:0 0 0 0; }
+
+.form-login a { float:left; font-size:12px; font-weight:normal; margin:25px 0 0 0; }
+
+.form-login label, span { display:block; font-size:14px; margin:10px 0; }
+
+.form-login input[type="text"],
+.form-login textarea,
+.form-login input[type="password"],
+.form-login select { background:#fff; border:1px solid #999; display:block; padding:5px; width:410px }
+
+.form-login textarea { height:200px; }
+
+.form-login input[type="submit"] { background:#f9f9f9; border:1px solid #999; cursor:pointer; float:right; margin:20px 0; padding:7px 12px; }
+.form-login input[type="submit"]:hover { background:#999; border:1px solid #f9f9f9; color:#fff; }
