@@ -37,8 +37,8 @@
 			echo "<td>$vet->email</td>";
 			echo "<td>$vet->phone</td>";
 			echo '<td>' . $vet->clinic()->name . '</td>';
-			echo "<td><a href='edit.php?id=$vet->id'>Edit</a></td>";
-			echo "<td><a href='destroy.php?id=$vet->id'>Destroy</a></td>";
+			echo "<td><a href='edit.php?id=$vet->id'>Editar</a></td>";
+			echo "<td><a href='destroy.php?id=$vet->id'>Remover</a></td>";
 			echo '</tr>';
     	}
   	?>

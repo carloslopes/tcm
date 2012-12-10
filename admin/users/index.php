@@ -37,8 +37,8 @@
       		echo "<td>$user->cpf</td>";
       		echo "<td>$user->phone</td>";
       		echo '<td>' . $user->admin() . '</td>';
-      		echo "<td><a href='edit.php?id=$user->id'>Edit</a></td>";
-      		echo "<td><a href='destroy.php?id=$user->id'>Destroy</a></td>";
+      		echo "<td><a href='edit.php?id=$user->id'>Editar</a></td>";
+      		echo "<td><a href='destroy.php?id=$user->id'>Remover</a></td>";
       		echo '</tr>';
     	}
   	?>

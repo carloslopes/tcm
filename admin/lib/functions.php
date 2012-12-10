@@ -83,14 +83,10 @@
   }
 
   function error_message($string) {
-    /* global $message; */
-    /* $message = "<div style='border: 1px solid #900; background: #ffd9d9; padding: 8px; color: #900'>$string</div>"; */
     echo "<div style='border: 1px solid #900; background: #ffd9d9; padding: 8px; color: #900'>$string</div>";
   }
 
   function success_message($string) {
-    /* global $message; */
-    /* $message = "<div style='border: 1px solid #004000; background: #ceffce; padding: 8px; color: #004000'>$string</div>"; */
     echo "<div style='border: 1px solid #004000; background: #ceffce; padding: 8px; color: #004000'>$string</div>";
   }
 

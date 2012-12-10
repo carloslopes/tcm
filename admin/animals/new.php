@@ -7,6 +7,8 @@
     $animal->donor_id = $current_user->id;
 
     if($animal->save()) {
+      upload_pictures($animal, $_FILES);
+
       header('Location: /animals');
       $_SESSION['success'] = 'Animal criado com sucesso';
     }

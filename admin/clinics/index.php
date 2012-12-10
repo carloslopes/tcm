@@ -35,8 +35,8 @@
       		echo "<td>$clinic->phone</td>";
       		echo "<td>$clinic->email</td>";
       		echo "<td>$clinic->website</td>";
-      		echo "<td><a href='edit.php?id=$clinic->id'>Edit</a></td>";
-      		echo "<td><a href='destroy.php?id=$clinic->id'>Destroy</a></td>";
+      		echo "<td><a href='edit.php?id=$clinic->id'>Editar</a></td>";
+      		echo "<td><a href='destroy.php?id=$clinic->id'>Remover</a></td>";
       		echo '</tr>';
     	}
   	?>

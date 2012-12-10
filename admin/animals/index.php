@@ -37,8 +37,8 @@
       		echo "<td>{$animal->breed()}</td>";
       		echo '<td>' . $animal->color() . '</td>';
       		echo '<td>' . $animal->age . '</td>';
-      		echo "<td><a href='edit.php?id=$animal->id'>Edit</a></td>";
-      		echo "<td><a href='destroy.php?id=$animal->id'>Destroy</a></td>";
+      		echo "<td><a href='edit.php?id=$animal->id'>Editar</a></td>";
+      		echo "<td><a href='destroy.php?id=$animal->id'>Remover</a></td>";
       		echo '</tr>';
     	}
   	?>
